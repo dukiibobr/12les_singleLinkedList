@@ -7,10 +7,10 @@ class List
 {
 	struct Node
 	{
-		int value;
+		T value;
 		Node* next;
 		Node() :value(0), next(nullptr) {}
-		Node(int value, Node* next) :value(value), next(next) {}
+		Node(T value, Node* next) :value(value), next(next) {}
 	};
 	Node* head;
 	
