@@ -1,6 +1,28 @@
 #include <iostream>
 using namespace std;
 
+class Point {
+	int x;
+	int y;
+public:
+	Point()
+	{
+		x = 0;
+		y = 0;
+	}
+	Point(int x, int y) :x(x), y(y) {}
+
+	void pointPrint()const {
+		cout << "x: " << x << endl;
+		cout << "y: " << y << endl;
+		cout << endl;
+	}
+	friend ostream& operator<<(ostream& out, const Point& p) {
+		out << "x: " << p.x << endl;
+		out << "y: " << p.y << endl;
+		return out;
+	}
+};
 
 template<typename T>
 class List
@@ -71,8 +93,9 @@ public:
 
 
 	void deleteFromHead() {
-		current = head;
-		head = current.next;
+		if (head == nullptr)return;
+		Node* current = head;
+		head = current->next;
 		delete current;
 	}
 
@@ -95,14 +118,6 @@ public:
 
 
 
-
-
-
-
-class Point {
-	int x;
-	int y;
-};
 class Vector
 {
 	int size;
@@ -130,26 +145,41 @@ public:
 };
 int main()
 {
-	List<int> l;
-	/*for (int i = 0; i < 10; i++)
-	{
-		l.addToHead(i);
-	}
-	l.print();
-	cout << endl;*/
+	Point p1(2, 7);
+	Point p2(9, 8);
+	Vector v;
+	v.addPointToHead(p1);
+	v.addPointToTail(p2);
+	v.show();
+	v.deletePointFromHead();
+	v.deletePointFromTail();
+	cout << "deleted below" << endl;
+	v.show();
 
 
-	l.addToTail(100);
-	l.addToTail(200);
-	l.addToTail(300);
-	l.print();
 
-	l.deleteFromTail();
-	l.print();
-	l.deleteFromTail();
-	l.print();
-	l.deleteFromTail();
-	l.print();
+
+
+	//List<int> l;
+	///*for (int i = 0; i < 10; i++)
+	//{
+	//	l.addToHead(i);
+	//}
+	//l.print();
+	//cout << endl;*/
+
+
+	//l.addToTail(100);
+	//l.addToTail(200);
+	//l.addToTail(300);
+	//l.print();
+
+	//l.deleteFromTail();
+	//l.print();
+	//l.deleteFromTail();
+	//l.print();
+	//l.deleteFromTail();
+	//l.print();
 
 
 
